@@ -1,3 +1,5 @@
+#Blinking of Eyes Detector in OpenCV
+
 import cv2 
 import dlib
 import math
@@ -26,9 +28,6 @@ def getratio(points,f_landmark):
 
         return hori/ver 
 
-def isblinking(p1,p2):
-    if p1[0] == p2[0] and p1[1] == p2[1]:
-        print("blink")
 while True:
     _,frame = cap.read()
 
@@ -42,7 +41,7 @@ while True:
         if (left_ratio + right_ratio)/2 > 6.5:
             playsound('D:/Machine_learning/cv/tink.wav')
             cv2.putText(frame,"Blink",(50,150),cv2.FONT_HERSHEY_PLAIN,2,(0,255,0))
-        #isblinking(vertical_top,vertical_bottom)
+        
     cv2.imshow("Main",frame)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
